@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GA Admissions Assignment</title>
+  <!-- meta -->
+  <meta charset="utf-8" />
+  <meta name="description" content="Admissions assessment for GA SF">
+  <meta name="author" content="ga-sf">
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <!-- mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- styles -->
+  <link rel="stylesheet" type="text/css" href="vendor/css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="vendor/css/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="vendor/css/prism.css">
+  <link rel="stylesheet" type="text/css" href="vendor/css/workshop-template.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+  <!-- scripts -->
+  <script type="text/javascript" src="vendor/js/jquery.min.js"></script>
+  <script type="text/javascript" src="vendor/js/caret.js"></script>
+  <script type="text/javascript" src="vendor/js/prism.js"></script>
+  <script type="text/javascript" src="vendor/js/live-code.js"></script>
+  <script type="text/javascript" src="assets/js/app.js"></script>
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="assets/imgs/favicon.png">
+</head>
+<body onload="liveCode.init()">
+  <div id="page-wrapper">
+    <div id="notification" class="hide">
+      <h4 class="notification-content">Try '<kbd>SHIFT</kdb> + <kbd>ENTER</kdb>' for a line break...</h4>
+    </div>
+    <section id="assignment-instructions">
+      <h2>Instructions</h2>
+      <p>Below is a sample <a href="#lesson-header">WDI lesson</a>. The ability to be a relatively resourceful and adept learner is crucial to demonstrating that you would be a good fit for WDI. This assessment will challenge you to comprehend and complete the material below.</p>
+      <p>By the end of the sample lesson, you should be able to meet several <a href="#objectives">objectives</a></p>
+      <p>Before you get started, ensure you meet the requirements for all the <a href="#prereqs">prerequisites</a></p>
+      <p>Once you complete the lesson and the practice exercises, you will be given a set of <a href="#challenges">challenges</a> that you will expected to turn in.</p>
+    </section>
+    <hr>
+    <section id="lesson-header">
+      <div id="ga-logo">
+        <img id="ga-logo" src="assets/imgs/ga-logo.png">
+      </div>
+      <h1>Manipulating HTML with JavaScript</h1>
+    </section>
+    <section id="workshop-intro">
+      <h4>Why is this important?</h4>
+      <p><em>This workshop is important because:</em></p>
+      <p>Today we will learn one way to both receive input and output by using JavaScript to manipulate our HTML document—a critical skill for any web developer!</p>
+      <h4 id="objectives">What are the objectives?</h4>
+      <p><em>After this workshop, developers will be able to:</em></p>
+      <ul>
+        <li><a href="#lo-1">Change an element's CSS class using JavaScript</a></li>
+        <li><a href="#lo-2">Capture User Input</a></li>
+        <li><a href="#lo-3">Display an output to the user on the page</a></li>
+      </ul>
+      <h4 id="prereqs">Where should we be now?</h4>
+      <p><em><b>Before continuing</b>, you should already be able to...:</em></p>
+      <ul>
+        <input type="checkbox"> Complete <a href="https://dash.generalassemb.ly/" target="_blank">Dash</a><br>
+        <input type="checkbox"> Use a text editor like <a href="https://www.sublimetext.com/" target="_blank">Sublime</a> or <a href="https://atom.io/" target="_blank">Atom</a><br>
+        <input type="checkbox"> Write basic <a href="https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/HTML_basics" target="_blank">HTML</a><br>
+        <input type="checkbox"> Write basic <a href="https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/CSS_basics" target="_blank">CSS</a><br>
+        <input type="checkbox"> Write basic <a href="https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/JavaScript_basics" target="_blank">JavaScript</a><br>
+        <input type="checkbox"> Use the <a href="https://www.google.com/chrome/browser/desktop/" target="_blank">Chrome browser</a><br>
+        <input type="checkbox"> Execute commands in Chrome's <a href="https://developers.google.com/web/tools/chrome-devtools/debug/console/?hl=en" target="_blank">JavaScript Console</a><br>
+      </ul>
+    </section>
+    <!-- introduction -->
+    <section>
+      <h3 id="lo-1">Objective 1: Changing an element's CSS class using JavaScript</h3>
+      <p>An <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank">HTML element</a> is made up of two HTML tags that enclose inner content.</p>
+      <img src="assets/imgs/anatomy-of-an-html-element.png" alt="anatomy of an html element" />
+      <p>If you navigate to <a href="http://example.com/" target="_blank">example.com</a>, the text "Example Domain" is contained within a <code>h1</code> element. See for yourself, by right clicking on that text, to open a context menu, and selecting the option <kbd>Inspect</kbd>.</p>
+      <p>In JavaScript, there is a special word, <code>document</code> that references the entire HTML page on the screen. It is a variable that represents our HTML page. This variable is also refered to as the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction" target="_blank">Document Object Model</a> or "DOM" for short. Using the DOM we can affect the HTML document (webpage) we are viewing.</p>
+      <p>Let's use the DOM to help us select something on the webpage. Let's catch one of the Pokémon below! They've each been assigned an HTML <code>id</code> that corresponds to their pokémon name. Given an <code>id</code> is unique, it is a good <em>identifier</em> to target something based on. The way we can do this is by using one of the DOM's built-in methods, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById" target="_blank"><code>getElementById</code></a>.</p>
+      <p>Now, let's catch some Pokémon!</p>
+      <p id="pokemon">
+        <img src="assets/imgs/bulbasaur.png" alt="bulbasaur" id="bulbasaur">
+        <img src="assets/imgs/charmander.png" alt="charmander" id="charmander">
+        <img src="assets/imgs/squirtle.png" alt="squirtle" id="squirtle">
+        <img src="assets/imgs/pikachu.png" alt="pikachu" id="pikachu">
+      </p>
+      <p>In the JavaScript console, let's select Charmander and remove him (put him into his pokéball). See what the code below does by clicking on the "Execute" button.</p>
+      <pre class="code-block">
+        <code class="language-javascript">var charmander = document.getElementById("charmander");
+charmander.className = "caught";</code>
+<button class="exec-code button-primary">Execute</button>
+      </pre>
+      <p><em>Note: refreshing the page sets it to its original state, making Charmander reappear.</em>
+      <p>How does this code make Charmander disappear? We targeted the Charmander <code>img</code> element and added the class, <code>caught</code>. This class has the CSS rule <code>opacity: 0</code> applied to it, making the element transparent.</p>
+      <h4>Practice: I choose you, Pikachu!</h4>
+      <p><b>Edit the code below</b> to catch Pikachu next! It will be helpful to understand that anything written after <code>//</code> in JavaScript is <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Comments" target="_blank">comment</a></em>. Write code below the corresponding comment. Select Pikachu based on his <code>id</code>, "pikachu", and change his <code>class</code> to "caught".</p>
+      <pre class="code-block editable">
+        <code class="language-javascript" contenteditable spellcheck="false">// select the element with the `id` Pikachu and save it to a variable
+
+// change the element's class to "caught"
+
+</code>
+<button class="exec-code button-primary">Execute</button>
+      </pre>
+      <p><em>Note: If you want to create a line break inside the code block, press <kbd>Shift</kdb> + <kbd>Enter</kbd></em></p>
+        <details><summary>Example solution</summary>
+          <pre class="code-block">
+            <code class="language-javascript">var pika = document.getElementById("pikachu");
+pika.className = "caught";</code>
+<button class="exec-code button-primary">Execute</button>
+          </pre>
+        </details>
+        <br>
+    </section>
+    <section>
+      <h3 id="lo-2">Objective 2: Capturing User Input</h3>
+      <p>We've just learned how we can capture Pokémon by writing JavaScript that manipulates our HTML. Let's now learn how to capture a user's input in JavaScript using a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt" target="_blank">prompt</a>.
+      <p>Great! Now let's prompt the user for some input and see the result <b>displayed in the console</b>.</p>
+      <pre class="code-block">
+        <code class="language-javascript">var sentiment = prompt("How are you feeling today?");
+console.log("Today you are", sentiment);</code>
+<button class="exec-code button-primary">Execute</button>
+      </pre>
+      <p><em>Note: <a href="https://developer.mozilla.org/en-US/docs/Web/API/console#Outputting_text_to_the_console" target="_blank"><code>console.log()</code></a> is just a simple way to print something to the console.</em></p>
+      <p>Try clicking the above button. It should produce a prompt message that will display what it's input to the console as output.</p>
+      <h4>Practice: Breakfast Prompt</h4>
+      <p><b>Edit the code below</b> to prompt the user with the message "What did you eat for breakfast this morning?". Display the user's response in the console in the format, "You ate oatmeal for breakfast", if they answered "oatmeal". Click the button "Execute" to test out the code.</p>
+      <pre class="code-block editable">
+        <code class="language-javascript" contenteditable spellcheck="false">var food = prompt("...");
+console.log("...");</code>
+<button class="exec-code button-primary">Execute</button>
+      </pre>
+        <details><summary>Example solution:</summary>
+          <pre class="code-block">
+            <code class="language-javascript">var food = prompt("What did you eat for breakfast this morning?");
+console.log("You ate", food, "for breakfast");</code>
+<button class="exec-code button-primary">Execute</button>
+          </pre>
+        </details>
+        <br>
+    </section>
+    <section>
+      <h3 id="lo-3">Objective 3: User Output</h3>
+      <p>Now that we can get user input and select elements on a page, we can think about how to display a user's input back to them! We'll have to change what's inside of an HTML element first by selecting it, then setting its <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML" target="_blank"><code>innerHTML</code></a> to anything we want. Let's do this to update the text below in order to reflect something we've learned today.</p>
+      <h5 class="user-output">Today I learned: <span id="new-knowledge">...</span></h5>
+      <p>The elipse above is wrapped in an HTML <code>span</code> tag that has the <code>id</code> "new-knowledge". Knowing this, we should be able to easily select it. Thereafter, we can change what's inside of it to reflect something we've learned. Let's see an example of how this will work.</p>
+      <p>
+        <pre class="code-block">
+            <code class="language-javascript">var newKnowledge = document.getElementById("new-knowledge");
+newKnowledge.innerHTML = "how to select and manipulate DOM elements!"</code>
+<button class="exec-code button-primary">Execute</button>
+        </pre>
+      </p>
+      <h4>Practice: All together now!</h4>
+      <p>Let's prompt the user for their favorite pokémon and display it back to them on the site! First, prompt the user for their favorite pokemon and store the input in a variable. Then select the text below using the <code>id</code> "favorite-pokemon" and change the element's inner HTML to display the favorite pokémon!</p>
+
+      <h5 class="user-output">My favorite pokémon is: <span id="favorite-pokemon">...</span></h5>
+      <pre class="code-block editable">
+        <code class="language-javascript" contenteditable spellcheck="false">// use a prompt to get the user's favorite pokemon and save it to a variable
+
+// select the element with the id "favorite-pokemon" and save it to a variable
+
+// set the inner html of the element to the user's favorite pokemon</code>
+
+<button class="exec-code button-primary">Execute</button>
+      </pre>
+      <p><em>Note: synthesizing new knowledge is always challenging, so try your best, but be encouraged to look at the example solution below thereafter.</em></p>
+        <details><summary>Example solution</summary>
+          <pre class="code-block">
+            <code class="language-javascript">var favPokemonInput = prompt("What is your favorite pokemon?");
+var favPokemonElement = document.getElementById("favorite-pokemon");
+favPokemonElement.innerHTML = favPokemonInput;</code>
+          </pre>
+        </details>
+    </section>
+<hr class="divider"/>
+    <h3 id="challenges">Challenges</h3>
+    <section id="intro-challenges">
+      <p><b>Instructions:</b> For each challenge below, work in the JavaScript file at the relative path, <a href="./assets/js/app.js"><kbd>assets/js/app.js</kbd></a> using a text editor like  <a href="https://www.sublimetext.com/" target="_blank">Sublime Text</a> or <a href="https://atom.io/" target="_blank">Atom</a>. This working file will be submitted to General Assembly Admissions. In order to view and make changes to the working file.</p>
+      <p><b>Important:</b> each time you edit and save the working file you must refresh the HTML page to load the changes into into it. To execute the code, click the button that corresponds to the challenge being worked on. Find any error messages in the JavaScript console.</p>
+    </section>
+    <section id="exercise-1">
+      <h4 class="challenge">First Challenge</h4>
+      <p>Inside the function <code>shakePokeball</code>, add the <code>class</code> "shake" to the element with <code>id</code> "pokeball", then click the button "Shake Pokeball".</p>
+      <img id="pokeball" src="assets/imgs/pokeball.png">
+      <button class="button-primary" onclick=app.shakePokeball()>Shake Pokeball</button>
+    </section>
+    <section id="exercise-2">
+      <h4 class="challenge">Second Challenge</h4>
+      <p>Inside the function <code>setName</code>, prompt is given to the user to find out what their name is. Select the element with id "first-name" and set its inner HTML to the input received from the user.</p>
+      <div id="name-tag">
+        <img src="assets/imgs/name-tag.png">
+        <span id="first-name">Your name here...</span>
+      </div>
+      <button class="button-primary" onclick=app.setName()>Set Name</button>
+    </section>
+    <section id="exercise-3">
+      <h4 class="challenge">Third Challenge</h4>
+      <p>Inside the function <code>setWebsite</code>, prompt the user for their favorite website and use it to set the inner HTML of the element with id "favorite-website". Display the website as plain text rather than a link.
+      <h5 class="user-output">My favorite website is <span id="favorite-website">...</span></h5>
+      <button class="button-primary" onclick=app.setWebsite()>Set Website</button>
+    </section>
+    <section id="exercise-4">
+      <h4 class="challenge">Bonus Challenge</h4>
+      <p>Refactor the <code>setWebsite</code> function in order for it to not just render the website as text, but to render it as a clickable <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a" target="_blank">anchor</a> element with the <code>href</code> set to the URL of the user's favorite website they're prompted for and the display text of the anchor element set to "find out here!".</p>
+      <p><em>Hint: Don't forget to add <code>http://</code> to the beginning of the site URL if you want the link to work!</em></span></p>
+    </section>
+    <section>
+      <p><em>Feedback for this sample lesson? Send an email to <a href="mailto:ilias@ga.co">one of the creators</a>.</em></p>
+    </section>
+    <footer>©2016 General Assembly. All rights reserved.</footer>
+  </div>
+</body>
+</html>
